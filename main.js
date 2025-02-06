@@ -1,37 +1,5 @@
 // Interface for Book
-class Book {
-  constructor(title, author, publicationYear, isbn) {
-    this.title = title;
-    this.author = author;
-    this.publicationYear = publicationYear;
-    this.isbn = isbn;
-    this.available = true;
-  }
 
-  getTitle() {
-    return this.title;
-  }
-
-  getAuthor() {
-    return this.author;
-  }
-
-  getPublicationYear() {
-    return this.publicationYear;
-  }
-
-  getISBN() {
-    return this.isbn;
-  }
-
-  isAvailable() {
-    return this.available;
-  }
-
-  setAvailability(available) {
-    this.available = available;
-  }
-}
 
 // Interface for Reader
 class Reader {
