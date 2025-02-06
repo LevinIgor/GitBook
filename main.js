@@ -73,177 +73,177 @@ class Reader {
 }
 
 // Interface for Library Management System
-// class LibraryManagementSystem {
-//   constructor() {
-//     this.books = [];
-//     this.readers = [];
-//   }
+class LibraryManagementSystem {
+  constructor() {
+    this.books = [];
+    this.readers = [];
+  }
 
-//   addBook(book) {
-//     if (this.books.find(b => b.isbn === book.isbn)) {
-//       throw new Error("Book with this ISBN already exists in the library.");
-//     }
-//     this.books.push(book);
-//   }
+  addBook(book) {
+    if (this.books.find(b => b.isbn === book.isbn)) {
+      throw new Error("Book with this ISBN already exists in the library.");
+    }
+    this.books.push(book);
+  }
 
-//   registerReader(reader) {
-//     if (this.readers.find(r => r.id === reader.id)) {
-//       throw new Error("Reader with this ID already registered.");
-//     }
-//     this.readers.push(reader);
-//   }
+  registerReader(reader) {
+    if (this.readers.find(r => r.id === reader.id)) {
+      throw new Error("Reader with this ID already registered.");
+    }
+    this.readers.push(reader);
+  }
 
-//   borrowBook(isbn, readerId) {
-//     const book = this.books.find(b => b.isbn === isbn);
-//     const reader = this.readers.find(r => r.id === readerId);
+  borrowBook(isbn, readerId) {
+    const book = this.books.find(b => b.isbn === isbn);
+    const reader = this.readers.find(r => r.id === readerId);
 
-//     if (!book) {
-//       throw new Error("Book with this ISBN not found.");
-//     }
+    if (!book) {
+      throw new Error("Book with this ISBN not found.");
+    }
 
-//     if (!reader) {
-//       throw new Error("Reader with this ID not found.");
-//     }
+    if (!reader) {
+      throw new Error("Reader with this ID not found.");
+    }
 
-//     if (!book.isAvailable()) {
-//       throw new Error("Book is not available for borrowing.");
-//     }
+    if (!book.isAvailable()) {
+      throw new Error("Book is not available for borrowing.");
+    }
 
-//     book.setAvailability(false);
-//     reader.borrowBook(book);
-//   }
+    book.setAvailability(false);
+    reader.borrowBook(book);
+  }
 
-//   returnBook(isbn, readerId) {
-//     const book = this.books.find(b => b.isbn === isbn);
-//     const reader = this.readers.find(r => r.id === readerId);
+  returnBook(isbn, readerId) {
+    const book = this.books.find(b => b.isbn === isbn);
+    const reader = this.readers.find(r => r.id === readerId);
 
-//     if (!book) {
-//       throw new Error("Book with this ISBN not found.");
-//     }
+    if (!book) {
+      throw new Error("Book with this ISBN not found.");
+    }
 
-//     if (!reader) {
-//       throw new Error("Reader with this ID not found.");
-//     }
+    if (!reader) {
+      throw new Error("Reader with this ID not found.");
+    }
 
-//     book.setAvailability(true);
-//     reader.returnBook(book);
-//   }
+    book.setAvailability(true);
+    reader.returnBook(book);
+  }
 
-//   searchBooksByTitle(title) {
-//     return this.books.filter(b =>
-//       b.title.toLowerCase().includes(title.toLowerCase())
-//     );
-//   }
+  searchBooksByTitle(title) {
+    return this.books.filter(b =>
+      b.title.toLowerCase().includes(title.toLowerCase())
+    );
+  }
 
-//   searchBooksByAuthor(author) {
-//     return this.books.filter(b =>
-//       b.author.toLowerCase().includes(author.toLowerCase())
-//     );
-//   }
+  searchBooksByAuthor(author) {
+    return this.books.filter(b =>
+      b.author.toLowerCase().includes(author.toLowerCase())
+    );
+  }
 
-//   getAllBooks() {
-//     return this.books;
-//   }
+  getAllBooks() {
+    return this.books;
+  }
 
-//   getAllReaders() {
-//     return this.readers;
-//   }
+  getAllReaders() {
+    return this.readers;
+  }
+}
+
+// // Example Usage (Command Line Interface)
+// const library = new LibraryManagementSystem();
+
+// // Adding Books
+// try {
+//   library.addBook(
+//     new Book(
+//       "The Little Prince",
+//       "Antoine de Saint-Exupéry",
+//       1943,
+//       "978-0156012195"
+//     )
+//   );
+//   library.addBook(new Book("1984", "George Orwell", 1949, "978-0451524935"));
+//   library.addBook(
+//     new Book(
+//       "The Master and Margarita",
+//       "Mikhail Bulgakov",
+//       1967,
+//       "978-5389004127"
+//     )
+//   );
+// } catch (error) {
+//   console.error(error.message);
 // }
 
-// Example Usage (Command Line Interface)
-const library = new LibraryManagementSystem();
+// // Registering Readers
+// try {
+//   library.registerReader(
+//     new Reader("John Doe", "123 Main St", "555-123-4567", "12345")
+//   );
+//   library.registerReader(
+//     new Reader("Jane Smith", "456 Oak Ave", "555-987-6543", "67890")
+//   );
+// } catch (error) {
+//   console.error(error.message);
+// }
 
-// Adding Books
-try {
-  library.addBook(
-    new Book(
-      "The Little Prince",
-      "Antoine de Saint-Exupéry",
-      1943,
-      "978-0156012195"
-    )
-  );
-  library.addBook(new Book("1984", "George Orwell", 1949, "978-0451524935"));
-  library.addBook(
-    new Book(
-      "The Master and Margarita",
-      "Mikhail Bulgakov",
-      1967,
-      "978-5389004127"
-    )
-  );
-} catch (error) {
-  console.error(error.message);
-}
+// // Borrowing a Book
+// try {
+//   library.borrowBook("978-0156012195", "12345");
+//   console.log("Book 'The Little Prince' borrowed by John Doe.");
+// } catch (error) {
+//   console.error(error.message);
+// }
 
-// Registering Readers
-try {
-  library.registerReader(
-    new Reader("John Doe", "123 Main St", "555-123-4567", "12345")
-  );
-  library.registerReader(
-    new Reader("Jane Smith", "456 Oak Ave", "555-987-6543", "67890")
-  );
-} catch (error) {
-  console.error(error.message);
-}
+// // Searching for Books by Title
+// const searchResults = library.searchBooksByTitle("little");
+// console.log("Search results for 'little':", searchResults);
 
-// Borrowing a Book
-try {
-  library.borrowBook("978-0156012195", "12345");
-  console.log("Book 'The Little Prince' borrowed by John Doe.");
-} catch (error) {
-  console.error(error.message);
-}
+// // Returning a Book
+// try {
+//   library.returnBook("978-0156012195", "12345");
+//   console.log("Book 'The Little Prince' returned by John Doe.");
+// } catch (error) {
+//   console.error(error.message);
+// }
 
-// Searching for Books by Title
-const searchResults = library.searchBooksByTitle("little");
-console.log("Search results for 'little':", searchResults);
+// // Listing All Books
+// console.log("List of all books:", library.getAllBooks());
 
-// Returning a Book
-try {
-  library.returnBook("978-0156012195", "12345");
-  console.log("Book 'The Little Prince' returned by John Doe.");
-} catch (error) {
-  console.error(error.message);
-}
+// // Listing All Readers
+// console.log("List of all readers:", library.getAllReaders());
 
-// Listing All Books
-console.log("List of all books:", library.getAllBooks());
+// // Additional error handling examples
+// try {
+//   library.borrowBook("978-0156012195", "12345"); // Attempt to borrow an already available book
+// } catch (error) {
+//   console.error(error.message); // Book is not available for borrowing.
+// }
 
-// Listing All Readers
-console.log("List of all readers:", library.getAllReaders());
+// try {
+//   library.registerReader(
+//     new Reader("New Reader", "New St", "555-111-2222", "12345")
+//   ); // Attempt to register a reader with an existing ID
+// } catch (error) {
+//   console.error(error.message); // Reader with this ID already registered.
+// }
 
-// Additional error handling examples
-try {
-  library.borrowBook("978-0156012195", "12345"); // Attempt to borrow an already available book
-} catch (error) {
-  console.error(error.message); // Book is not available for borrowing.
-}
+// // Output the availability status of the book after returning
+// const theLittlePrinceBook = library.books.find(
+//   b => b.isbn === "978-0156012195"
+// );
+// console.log(
+//   "Status of 'The Little Prince':",
+//   theLittlePrinceBook.isAvailable() ? "Available" : "Not Available"
+// );
 
-try {
-  library.registerReader(
-    new Reader("New Reader", "New St", "555-111-2222", "12345")
-  ); // Attempt to register a reader with an existing ID
-} catch (error) {
-  console.error(error.message); // Reader with this ID already registered.
-}
-
-// Output the availability status of the book after returning
-const theLittlePrinceBook = library.books.find(
-  b => b.isbn === "978-0156012195"
-);
-console.log(
-  "Status of 'The Little Prince':",
-  theLittlePrinceBook.isAvailable() ? "Available" : "Not Available"
-);
-
-// Check the list of borrowed books by the reader
-const johnDoeReader = library.readers.find(r => r.id === "12345");
-console.log(
-  "List of books borrowed by John Doe:",
-  johnDoeReader.getBorrowedBooks()
-);
+// // Check the list of borrowed books by the reader
+// const johnDoeReader = library.readers.find(r => r.id === "12345");
+// console.log(
+//   "List of books borrowed by John Doe:",
+//   johnDoeReader.getBorrowedBooks()
+// );
 
 // Other task options (with description and requirements)
 
