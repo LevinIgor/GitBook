@@ -1,44 +1,76 @@
 // Interface for Book
-
-
-// Interface for Reader
-class Reader {
-  constructor(name, address, phone, id) {
-    this.name = name;
-    this.address = address;
-    this.phone = phone;
-    this.id = id;
-    this.borrowedBooks = [];
+class Book {
+  constructor(title, author, publicationYear, isbn) {
+    this.title = title;
+    this.author = author;
+    this.publicationYear = publicationYear;
+    this.isbn = isbn;
+    this.available = true;
   }
 
-  getName() {
-    return this.name;
+  getTitle() {
+    return this.title;
   }
 
-  getAddress() {
-    return this.address;
+  getAuthor() {
+    return this.author;
   }
 
-  getPhone() {
-    return this.phone;
+  getPublicationYear() {
+    return this.publicationYear;
   }
 
-  getId() {
-    return this.id;
+  getISBN() {
+    return this.isbn;
   }
 
-  getBorrowedBooks() {
-    return this.borrowedBooks;
+  isAvailable() {
+    return this.available;
   }
 
-  borrowBook(book) {
-    this.borrowedBooks.push(book);
-  }
-
-  returnBook(book) {
-    this.borrowedBooks = this.borrowedBooks.filter(b => b.isbn !== book.isbn);
+  setAvailability(available) {
+    this.available = available;
   }
 }
+
+// Interface for Reader
+// class Reader {
+//   constructor(name, address, phone, id) {
+//     this.name = name;
+//     this.address = address;
+//     this.phone = phone;
+//     this.id = id;
+//     this.borrowedBooks = [];
+//   }
+
+//   getName() {
+//     return this.name;
+//   }
+
+//   getAddress() {
+//     return this.address;
+//   }
+
+//   getPhone() {
+//     return this.phone;
+//   }
+
+//   getId() {
+//     return this.id;
+//   }
+
+//   getBorrowedBooks() {
+//     return this.borrowedBooks;
+//   }
+
+//   borrowBook(book) {
+//     this.borrowedBooks.push(book);
+//   }
+
+//   returnBook(book) {
+//     this.borrowedBooks = this.borrowedBooks.filter(b => b.isbn !== book.isbn);
+//   }
+// }
 
 // Interface for Library Management System
 class LibraryManagementSystem {
