@@ -34,121 +34,121 @@ class Book {
 }
 
 // Interface for Reader
-// class Reader {
-//   constructor(name, address, phone, id) {
-//     this.name = name;
-//     this.address = address;
-//     this.phone = phone;
-//     this.id = id;
-//     this.borrowedBooks = [];
-//   }
-
-//   getName() {
-//     return this.name;
-//   }
-
-//   getAddress() {
-//     return this.address;
-//   }
-
-//   getPhone() {
-//     return this.phone;
-//   }
-
-//   getId() {
-//     return this.id;
-//   }
-
-//   getBorrowedBooks() {
-//     return this.borrowedBooks;
-//   }
-
-//   borrowBook(book) {
-//     this.borrowedBooks.push(book);
-//   }
-
-//   returnBook(book) {
-//     this.borrowedBooks = this.borrowedBooks.filter(b => b.isbn !== book.isbn);
-//   }
-// }
-
-// Interface for Library Management System
-class LibraryManagementSystem {
-  constructor() {
-    this.books = [];
-    this.readers = [];
+class Reader {
+  constructor(name, address, phone, id) {
+    this.name = name;
+    this.address = address;
+    this.phone = phone;
+    this.id = id;
+    this.borrowedBooks = [];
   }
 
-  addBook(book) {
-    if (this.books.find(b => b.isbn === book.isbn)) {
-      throw new Error("Book with this ISBN already exists in the library.");
-    }
-    this.books.push(book);
+  getName() {
+    return this.name;
   }
 
-  registerReader(reader) {
-    if (this.readers.find(r => r.id === reader.id)) {
-      throw new Error("Reader with this ID already registered.");
-    }
-    this.readers.push(reader);
+  getAddress() {
+    return this.address;
   }
 
-  borrowBook(isbn, readerId) {
-    const book = this.books.find(b => b.isbn === isbn);
-    const reader = this.readers.find(r => r.id === readerId);
-
-    if (!book) {
-      throw new Error("Book with this ISBN not found.");
-    }
-
-    if (!reader) {
-      throw new Error("Reader with this ID not found.");
-    }
-
-    if (!book.isAvailable()) {
-      throw new Error("Book is not available for borrowing.");
-    }
-
-    book.setAvailability(false);
-    reader.borrowBook(book);
+  getPhone() {
+    return this.phone;
   }
 
-  returnBook(isbn, readerId) {
-    const book = this.books.find(b => b.isbn === isbn);
-    const reader = this.readers.find(r => r.id === readerId);
-
-    if (!book) {
-      throw new Error("Book with this ISBN not found.");
-    }
-
-    if (!reader) {
-      throw new Error("Reader with this ID not found.");
-    }
-
-    book.setAvailability(true);
-    reader.returnBook(book);
+  getId() {
+    return this.id;
   }
 
-  searchBooksByTitle(title) {
-    return this.books.filter(b =>
-      b.title.toLowerCase().includes(title.toLowerCase())
-    );
+  getBorrowedBooks() {
+    return this.borrowedBooks;
   }
 
-  searchBooksByAuthor(author) {
-    return this.books.filter(b =>
-      b.author.toLowerCase().includes(author.toLowerCase())
-    );
+  borrowBook(book) {
+    this.borrowedBooks.push(book);
   }
 
-  getAllBooks() {
-    return this.books;
-  }
-
-  getAllReaders() {
-    return this.readers;
+  returnBook(book) {
+    this.borrowedBooks = this.borrowedBooks.filter(b => b.isbn !== book.isbn);
   }
 }
+
+// Interface for Library Management System
+// class LibraryManagementSystem {
+//   constructor() {
+//     this.books = [];
+//     this.readers = [];
+//   }
+
+//   addBook(book) {
+//     if (this.books.find(b => b.isbn === book.isbn)) {
+//       throw new Error("Book with this ISBN already exists in the library.");
+//     }
+//     this.books.push(book);
+//   }
+
+//   registerReader(reader) {
+//     if (this.readers.find(r => r.id === reader.id)) {
+//       throw new Error("Reader with this ID already registered.");
+//     }
+//     this.readers.push(reader);
+//   }
+
+//   borrowBook(isbn, readerId) {
+//     const book = this.books.find(b => b.isbn === isbn);
+//     const reader = this.readers.find(r => r.id === readerId);
+
+//     if (!book) {
+//       throw new Error("Book with this ISBN not found.");
+//     }
+
+//     if (!reader) {
+//       throw new Error("Reader with this ID not found.");
+//     }
+
+//     if (!book.isAvailable()) {
+//       throw new Error("Book is not available for borrowing.");
+//     }
+
+//     book.setAvailability(false);
+//     reader.borrowBook(book);
+//   }
+
+//   returnBook(isbn, readerId) {
+//     const book = this.books.find(b => b.isbn === isbn);
+//     const reader = this.readers.find(r => r.id === readerId);
+
+//     if (!book) {
+//       throw new Error("Book with this ISBN not found.");
+//     }
+
+//     if (!reader) {
+//       throw new Error("Reader with this ID not found.");
+//     }
+
+//     book.setAvailability(true);
+//     reader.returnBook(book);
+//   }
+
+//   searchBooksByTitle(title) {
+//     return this.books.filter(b =>
+//       b.title.toLowerCase().includes(title.toLowerCase())
+//     );
+//   }
+
+//   searchBooksByAuthor(author) {
+//     return this.books.filter(b =>
+//       b.author.toLowerCase().includes(author.toLowerCase())
+//     );
+//   }
+
+//   getAllBooks() {
+//     return this.books;
+//   }
+
+//   getAllReaders() {
+//     return this.readers;
+//   }
+// }
 
 // Example Usage (Command Line Interface)
 const library = new LibraryManagementSystem();
